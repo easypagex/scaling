@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scaling Up Spain | Coaching para CEOs que quieren crecer sin caos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #06101f;
+    --dark: #0b1929;
+    --card: #0f2035;
+    --border: #1e3452;
+    --orange: #E8621A;
+    --orange-light: #FF7A30;
+    --white: #F5F3EF;
+    --grey: #888;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-serif: 'DM Serif Display', serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4%;
+    background: rgba(6,16,31,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-cta {
+    background: var(--orange);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.55rem 1.4rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--orange-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 10rem 4% 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(232,98,26,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block; width: 32px; height: 1px;
+    background: var(--orange);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 9vw, 9rem);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    max-width: 900px;
+    margin-bottom: 2rem;
+  }
+  .hero h1 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--orange);
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: #bbb;
+    max-width: 520px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--orange);
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 2.2rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1px solid var(--border);
+    color: var(--white);
+    text-decoration: none;
+    padding: 1rem 2.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+  .hero-stats {
+    display: flex; gap: 3rem; flex-wrap: wrap;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--grey);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.3rem;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 4%; }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1.2rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+  }
+  .section-title em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--orange);
+  }
+
+  /* PROBLEM */
+  .problem {
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .problem-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .problem-list { list-style: none; margin-top: 2rem; }
+  .problem-list li {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+    color: #ccc;
+    display: flex; align-items: baseline; gap: 1rem;
+  }
+  .problem-list li::before {
+    content: '✗';
+    color: #555;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+  }
+  .solution-list { list-style: none; margin-top: 2rem; }
+  .solution-list li {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+    color: #ccc;
+    display: flex; align-items: baseline; gap: 1rem;
+  }
+  .solution-list li::before {
+    content: '✓';
+    color: var(--orange);
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  /* 4 PILARES */
+  .pillars { max-width: 1200px; margin: 0 auto; }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 4rem;
+    border: 1px solid var(--border);
+  }
+  .pillar-card {
+    background: var(--card);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.25s;
+  }
+  .pillar-card:hover { background: #122338; }
+  .pillar-num {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.25s;
+  }
+  .pillar-card:hover .pillar-num { color: rgba(232,98,26,0.2); }
+  .pillar-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .pillar-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    color: var(--orange);
+    margin-bottom: 0.8rem;
+  }
+  .pillar-card p {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.6;
+  }
+
+  /* PROMISE */
+  .promise-bg {
+    background: var(--orange);
+    padding: 5rem 4%;
+    text-align: center;
+  }
+  .promise-bg .section-label { color: #fff; opacity: 0.7; }
+  .promise-bg .section-title { color: #fff; }
+  .promise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 3rem auto 0;
+  }
+  .promise-item {
+    background: rgba(0,0,0,0.2);
+    padding: 2rem 1.5rem;
+  }
+  .promise-item .big {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .promise-item p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+  }
+
+  /* COACH */
+  .coach-section { background: var(--dark); border-top: 1px solid var(--border); }
+  .coach-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .coach-photo {
+    aspect-ratio: 4/5;
+    background: var(--card);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .coach-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #071525 0%, #0d2040 100%);
+    color: var(--grey);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+  .coach-initials {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    color: var(--orange);
+    opacity: 0.6;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .coach-accent {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--orange);
+  }
+  .coach-name {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.4rem;
+  }
+  .coach-title {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1.8rem;
+  }
+  .coach-bio {
+    font-size: 1rem;
+    color: #bbb;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .coach-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  /* METHODOLOGY */
+  .method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    max-width: 900px;
+  }
+  .method-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: border-color 0.25s;
+  }
+  .method-card:hover { border-color: var(--orange); }
+  .method-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--orange);
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+  }
+  .method-bullets { list-style: none; }
+  .method-bullets li {
+    font-size: 0.88rem;
+    color: #999;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 0.7rem;
+  }
+  .method-bullets li:last-child { border-bottom: none; }
+  .method-bullets li::before {
+    content: '→';
+    color: var(--orange);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    padding: 7rem 4%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(232,98,26,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-band .section-title {
+    max-width: 750px;
+    margin: 0 auto 2.5rem;
+  }
+  .cta-sub {
+    font-size: 1rem;
+    color: var(--grey);
+    margin-bottom: 3rem;
+  }
+  .cta-band .hero-actions { justify-content: center; }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 4%;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--grey);
+  }
+  .footer-brand span { color: var(--orange); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-size: 0.8rem;
+    color: var(--grey);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--orange); }
+  .footer-copy { font-size: 0.75rem; color: #444; }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .problem-inner, .coach-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .promise-grid { grid-template-columns: 1fr; max-width: 380px; }
+    .method-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 2rem; }
+    nav { padding: 1rem 4%; }
+  }
+  @media (max-width: 540px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; }
+    .btn-primary, .btn-ghost { text-align: center; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+    * { transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://www.scalingupspain.com/" target="_blank" class="nav-logo">Scaling Up <span>Spain</span></a>
+  <a href="https://scalingup.mykajabi.com/mastermind-scaling-up" target="_blank" class="nav-cta">Empieza a Escalar</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow reveal">Coaching Estratégico para CEOs</p>
+  <h1 class="reveal">Escala tu <em>liderazgo.</em><br>Escala tu empresa.</h1>
+  <p class="hero-sub reveal">Crece x10 con una metodología probada — sin caos, sin dramas, sin perder el control de lo que importa.</p>
+  <div class="hero-actions reveal">
+    <a href="https://scalingup.mykajabi.com/mastermind-scaling-up" target="_blank" class="btn-primary">Empieza a Escalar →</a>
+    <a href="https://scalingup.mykajabi.com/opt-in-a66f0b2a-7efa-49df-bad9-e68c291d2586" target="_blank" class="btn-ghost">Descarga el PDF gratis</a>
+  </div>
+  <div class="hero-stats reveal">
+    <div class="stat-item">
+      <div class="stat-num">x10</div>
+      <div class="stat-label">Valoración de empresa</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">x3</div>
+      <div class="stat-label">Rentabilidad media industria</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">−80%</div>
+      <div class="stat-label">Tiempo de gestión</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">x2</div>
+      <div class="stat-label">CashFlow</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM / SOLUTION -->
+<section class="problem">
+  <div class="problem-inner">
+    <div class="reveal">
+      <p class="section-label">El problema</p>
+      <h2 class="section-title">¿Te suena <em>familiar?</em></h2>
+      <ul class="problem-list">
+        <li>Tu empresa crece pero tú siempre apagando fuegos</li>
+        <li>El equipo no está alineado ni comprometido</li>
+        <li>Demasiadas urgencias, pocas decisiones estratégicas</li>
+        <li>Sientes que el crecimiento te cuesta demasiado</li>
+        <li>Trabajas más pero avanzas menos</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <p class="section-label">La solución</p>
+      <h2 class="section-title">Así es <em>diferente</em></h2>
+      <ul class="solution-list">
+        <li>Metodología probada en miles de empresas globales</li>
+        <li>Equipo comprometido con valores y propósito claros</li>
+        <li>Estrategia simple que genera crecimiento sostenible</li>
+        <li>Ejecución disciplinada con métricas reales</li>
+        <li>Cashflow que financia su propio crecimiento</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4 PILARES -->
+<section>
+  <div class="pillars">
+    <p class="section-label reveal">La metodología</p>
+    <h2 class="section-title reveal">Cuatro pilares.<br>Un sistema <em>completo.</em></h2>
+    <div class="pillars-grid">
+      <div class="pillar-card reveal">
+        <div class="pillar-num">01</div>
+        <div class="pillar-icon">🧠</div>
+        <h3>Equipo</h3>
+        <p>Las personas correctas, en los sitios correctos, haciendo las cosas correctas — y comprometidas con la empresa.</p>
+      </div>
+      <div class="pillar-card reveal">
+        <div class="pillar-num">02</div>
+        <div class="pillar-icon">🎯</div>
+        <h3>Estrategia</h3>
+        <p>Una visión clara y una estrategia diferenciadora que impulsa un crecimiento sostenible y con propósito.</p>
+      </div>
+      <div class="pillar-card reveal">
+        <div class="pillar-num">03</div>
+        <div class="pillar-icon">⚡</div>
+        <h3>Ejecución</h3>
+        <p>Métricas, ritmos de trabajo y hábitos de ejecución impecable para procesos que funcionan solos.</p>
+      </div>
+      <div class="pillar-card reveal">
+        <div class="pillar-num">04</div>
+        <div class="pillar-icon">💰</div>
+        <h3>Cashflow</h3>
+        <p>La empresa no necesita efectivo para crecer — genera el efectivo que impulsa su propio crecimiento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMESA -->
+<div class="promise-bg">
+  <p class="section-label">Nuestra promesa</p>
+  <h2 class="section-title">Resultados<br>medibles.</h2>
+  <div class="promise-grid">
+    <div class="promise-item">
+      <div class="big">💰</div>
+      <p>x2 CashFlow · x3 Rentabilidad · x10 Valoración</p>
+    </div>
+    <div class="promise-item">
+      <div class="big">⏱</div>
+      <p>Reduce un 80% el tiempo necesario para gestionar tu empresa</p>
+    </div>
+    <div class="promise-item">
+      <div class="big">🚀</div>
+      <p>Acompañamiento continuo para agilizar el proceso y aliviar la carga directiva</p>
+    </div>
+  </div>
+</div>
+
+<!-- COACH -->
+<section class="coach-section">
+  <div class="coach-inner">
+    <div class="coach-photo reveal">
+      <div class="coach-placeholder">
+        <div class="coach-initials">LA</div>
+        <p style="font-size:0.7rem;letter-spacing:0.15em;opacity:0.5">LAIA ALOMAR</p>
+      </div>
+      <div class="coach-accent"></div>
+    </div>
+    <div class="reveal">
+      <p class="section-label">Tu coach</p>
+      <h2 class="coach-name">Laia Alomar</h2>
+      <p class="coach-title">Coach Certificada Scaling Up</p>
+      <p class="coach-bio">
+        Laia trabaja con CEOs y equipos directivos para implementar la metodología Scaling Up y transformar cómo las empresas crecen. Su enfoque combina planificación estratégica real con el acompañamiento necesario para que la ejecución deje de ser el cuello de botella.
+      </p>
+      <p class="coach-bio" style="margin-bottom: 0;">
+        El objetivo: que recuperes el control de tu empresa — y de tu vida.
+      </p>
+      <div class="coach-links" style="margin-top:2rem;">
+        <a href="https://www.scalingupspain.com/" target="_blank" class="btn-primary">scalingupspain.com</a>
+        <a href="https://www.linkedin.com/in/laiaalomar/" target="_blank" class="btn-ghost">LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGÍA DETALLE -->
+<section>
+  <p class="section-label reveal">Qué trabajamos</p>
+  <h2 class="section-title reveal">El sistema en <em>detalle.</em></h2>
+  <div class="method-grid">
+    <div class="method-card reveal">
+      <h4>🧠 Equipo</h4>
+      <ul class="method-bullets">
+        <li>Cultura, Valores y Propósito</li>
+        <li>Desarrollo de liderazgo</li>
+        <li>Funciones y Procesos</li>
+      </ul>
+    </div>
+    <div class="method-card reveal">
+      <h4>🎯 Estrategia</h4>
+      <ul class="method-bullets">
+        <li>Visión y Objetivos</li>
+        <li>Estrategia Diferenciadora</li>
+        <li>7 Áreas Clave de Estrategia</li>
+      </ul>
+    </div>
+    <div class="method-card reveal">
+      <h4>⚡ Ejecución</h4>
+      <ul class="method-bullets">
+        <li>Métricas y Ritmos de Trabajo</li>
+        <li>Hábitos de Ejecución Impecable</li>
+        <li>OKRs y KPIs alineados</li>
+      </ul>
+    </div>
+    <div class="method-card reveal">
+      <h4>💰 Efectivo</h4>
+      <ul class="method-bullets">
+        <li>Herramientas para acelerar el efectivo</li>
+        <li>Psicología y Estrategia de Precios</li>
+        <li>Plan Estratégico de Una Página (OPSP)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-band">
+  <p class="section-label reveal">¿Listo para escalar?</p>
+  <h2 class="section-title reveal">Tu empresa tiene<br>potencial para <em>más.</em></h2>
+  <p class="cta-sub reveal">Organiza una llamada 1:1 con Laia y descubre cómo encaja Scaling Up en tu empresa.</p>
+  <div class="hero-actions reveal">
+    <a href="https://scalingup.mykajabi.com/mastermind-scaling-up" target="_blank" class="btn-primary">Reserva tu llamada 1:1 →</a>
+    <a href="https://scalingup.mykajabi.com/opt-in-a66f0b2a-7efa-49df-bad9-e68c291d2586" target="_blank" class="btn-ghost">Descarga el PDF gratis</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Scaling Up <span>Spain</span></div>
+  <div class="footer-links">
+    <a href="https://www.scalingupspain.com/" target="_blank">Web oficial</a>
+    <a href="https://www.linkedin.com/in/laiaalomar/" target="_blank">LinkedIn</a>
+    <a href="https://scalingup.mykajabi.com/mastermind-scaling-up" target="_blank">Empieza a Escalar</a>
+  </div>
+  <div class="footer-copy">© 2024 ScalingUpSpain · Coaching para CEOs</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
